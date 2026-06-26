@@ -1,2 +1,76 @@
-# -Local-Music-Player
-A Local Music Player, used for listen to local music, lightweight, simple, and can be hidden
+# MusicFloat — 透明桌面音乐播放器
+
+一个轻量级的透明桌面小窗口音乐播放器，始终悬浮在桌面上方。
+
+## 功能特性
+
+- **透明悬浮窗口** — 毛玻璃风格，始终置顶
+- **窗口锁定** — 默认锁定位置，解锁时可拖动和缩放
+- **窗口尺寸可调** — 解锁后拖拽右下角调整大小
+- **播放列表** — 自动扫描 `music/` 子文件夹中的音频文件
+- **文件夹切换** — 下拉框切换不同音乐文件夹
+- **播放模式** — 列表循环 / 单曲循环 / 顺序播放 / 随机播放
+- **播放控制** — 播放/暂停、上一首、下一首、进度拖拽、静音
+- **快捷键** — 空格键播放/暂停
+- **无终端窗口** — 启动时不弹出黑色终端
+- **可移植** — 放到任意路径都能运行
+
+## 目录结构
+
+```
+desktop-music-player/
+├── main.js           # Electron 主进程
+├── preload.js        # 预加载脚本
+├── src/
+│   ├── index.html    # 界面
+│   ├── style.css     # 样式
+│   └── renderer.js   # 渲染逻辑
+├── music/            # 音乐文件夹
+│   └── [子文件夹]/
+│       └── *.mp3
+├── assets/           # 图标资源
+├── package.json
+├── MusicFloat.vbs    # 无终端启动脚本
+├── build.bat         # 打包脚本
+├── install-and-run.bat
+└── create-shortcut.vbs  # 创建桌面快捷方式
+```
+
+## 使用方法
+
+### 运行
+```
+双击 install-and-run.bat
+```
+或直接双击 `MusicFloat.vbs`（无终端窗口）
+
+### 添加音乐
+在 `music/` 目录下创建子文件夹，放入音频文件（支持 mp3/wav/ogg/flac/m4a/aac/wma）：
+```
+music/
+  我的收藏/
+    song1.mp3
+    song2.mp3
+  古典音乐/
+    beethoven.mp3
+```
+
+### 打包为可执行文件
+```
+双击 build.bat
+```
+输出在 `dist/` 目录，运行 `create-shortcut.vbs` 创建桌面快捷方式。
+
+## 界面说明
+
+| 元素 | 功能 |
+|------|------|
+| 🔒/🔓 | 锁定/解锁窗口位置 |
+| 📁 | 打开当前音乐文件夹 |
+| ✕ | 关闭播放器 |
+| 下拉框 | 切换音乐文件夹 |
+| ◀ ▶ | 上一首 / 下一首 |
+| ▶/⏸ | 播放 / 暂停 |
+| 🔄/1/→/🔀 | 切换播放模式 |
+| 🔊/🔇 | 静音切换 |
+| 进度条 | 拖拽调整播放进度 |
